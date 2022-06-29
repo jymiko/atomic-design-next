@@ -1,0 +1,31 @@
+.button {
+    @apply border-none outline-none block text-base font-bold uppercase rounded-md cursor-pointer relative min-w-[100px]
+}
+
+.small {
+    @apply p-2
+}
+
+.medium {
+    @apply px-6 py-4
+}
+
+.large {
+    @apply px-10 py-6
+}
+
+.default {
+    @apply bg-blue-500 text-white border border-blue-600
+}
+
+.bordered {
+    @apply border border-solid border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white
+}
+
+.rounded {
+    @apply bg-red-500 text-white border border-red-600 hover:border-red-800 hover:bg-red-700 ease-in-out transition duration-150
+}
+
+.disabled {
+    @apply bg-gray-300 text-gray-500 border-gray-400 cursor-default
+}

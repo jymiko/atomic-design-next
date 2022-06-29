@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import {Button, Title, Input} from '../components/atoms'
+import { BeakerIcon } from '@heroicons/react/solid'
 
 export default function Home() {
   return (
@@ -12,9 +14,16 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <Title>Welcome to next js atomic design</Title>
+        <BeakerIcon className="h-5 w-5 text-blue-500"/>
+        <Input/>
+        <Button onClick={() => {console.log('clik clik')}} type={'Submit'} theme={'default'}>
+          Register
+        </Button>
+        <div className="my-2"/>
+        <Button onClick={() => {console.log('clik clik')}} type={'button'} theme={'bordered'}>
+          Login
+        </Button>
 
         <p className={styles.description}>
           Get started by editing{' '}
