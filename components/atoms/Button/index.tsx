@@ -19,6 +19,11 @@ export const ButtonSize = {
     LARGE: 'large',
 }
 
+export const TextSize = {
+    SMALL: 'text-small',
+    LARGE: 'text-large'
+}
+
 type Props = {
     type: string,
     theme: string,
@@ -28,14 +33,16 @@ type Props = {
     children: ReactNode,
     className: string,
     disabled: boolean,
+    TextSize: string
 }
 
 const Button = (props: Props):ReactElement => {
-    const { type, onClick, children, theme, size, className, disabled } = props
+    const { type, onClick, children, theme, size, className, disabled, TextSize } = props
     const classProps: string = classnames(
         styles.button,
         styles[theme],
         styles[size],
+        styles[TextSize],
         {
           [styles.disabled]: disabled,
         },
@@ -57,6 +64,7 @@ Button.defaultProps = {
     onChange: () => {},
     className: '',
     disabled: false,
+    TextSize: TextSize.SMALL
 }
 
 export default Button

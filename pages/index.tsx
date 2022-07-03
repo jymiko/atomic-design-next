@@ -17,11 +17,11 @@ export default function Home() {
         <Title>Welcome to next js atomic design</Title>
         <BeakerIcon className="h-5 w-5 text-blue-500"/>
         <Input/>
-        <Button onClick={() => {console.log('clik clik')}} type={'Submit'} theme={'default'}>
+        <Button onClick={() => {console.log('clik clik')}} type={'Submit'} theme={'rounded'} TextSize={'text-small'}>
           Register
         </Button>
         <div className="my-2"/>
-        <Button onClick={() => {console.log('clik clik')}} type={'button'} theme={'bordered'}>
+        <Button onClick={() => {console.log('clik clik')}} type={'button'} theme={'rounded-bordered'}>
           Login
         </Button>
 
