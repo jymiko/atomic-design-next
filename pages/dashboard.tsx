@@ -3,7 +3,9 @@ import Layout from '../layouts/default'
 const dashboard = () => {
   return (
     <Layout>
-        Dashboard
+        <div className="container mx-auto pt-40">
+            Dashboard
+        </div>
     </Layout>
   )
 }

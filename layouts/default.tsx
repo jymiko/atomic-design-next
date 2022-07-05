@@ -1,3 +1,4 @@
+import Footer from "components/old/Footer/Footer"
 import NavbarMobile from "components/old/Navbar/NavbarMobile"
 import NavbarPrimary from "components/old/Navbar/NavbarPrimary"
 
@@ -10,7 +11,10 @@ const defaults = ({children}:any) => {
         <div className="block lg:hidden">
             <NavbarMobile/>
         </div>
-        <main>{children}</main>
+        <main>
+            {children}
+        </main>
+        <Footer/>
     </div>
   )
 }
