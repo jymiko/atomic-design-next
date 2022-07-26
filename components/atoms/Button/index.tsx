@@ -48,7 +48,6 @@ const Button = (props: Props):ReactElement => {
         },
         className
       )
-      console.log(classProps)
     return (
         <button type={type as any} onClick={onClick as any} disabled={disabled} className={classProps}>
             {children}

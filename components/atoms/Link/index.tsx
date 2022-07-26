@@ -13,7 +13,7 @@ const LinkComponent = (props:Props) => {
 
     return(
         <Link href={'/'+props.href}>
-            <span className={classnames(styles.title, props.className)}>{props.text}</span>
+            <span className={classnames(styles.navlink, props.className)}>{props.text}</span>
         </Link>
     )
 }
