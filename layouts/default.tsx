@@ -13,7 +13,7 @@ const defaults = ({children}:any) => {
             {/* <NavbarMobile/> */}
         </div>
         <div>
-            <main>{children}</main>
+          <main>{children}</main>
         </div>
     </div>
   )

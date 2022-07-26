@@ -1,14 +1,9 @@
 import '../styles/globals.scss'
-// ** React Imports
-import { ReactNode } from 'react'
 
 // ** Next Imports
 import Head from 'next/head'
-import { Router } from 'next/router'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
-
-import UserLayout from '../layouts/default'
 import { AuthProvider } from '../context/AuthContext'
 
 // ** Extend App Props with Emotion
@@ -18,9 +13,7 @@ type ExtendedAppProps = AppProps & {
 
 const App = (props: ExtendedAppProps) => {
   const { Component, pageProps } = props
-  console.log(Component)
-
-  const getLayout = Component.getLayout ?? (page => <UserLayout>{page}</UserLayout>)
+  
   return(
     <div>
        <Head>
@@ -28,7 +21,7 @@ const App = (props: ExtendedAppProps) => {
         </Head>
         <AuthProvider>
           <div>
-            {getLayout(<Component {...pageProps} />)}
+            <Component {...pageProps} />
           </div>
         </AuthProvider>
     </div>
