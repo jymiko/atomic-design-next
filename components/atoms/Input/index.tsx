@@ -1,5 +1,6 @@
 import { ReactElement } from "react"
 import classnames from 'classnames'
+import styles from './styles.module.scss'
 
 type Props = {
     type?: string,
@@ -9,8 +10,14 @@ type Props = {
 }
 
 const Input = (props:Props):ReactElement => {
+    const {type, className, placeholder} = props
+    const classProps: string = classnames(
+        styles.input,
+        styles[type],
+        className
+    )
     return(
-        <input type={props.type} className={classnames(props.type, props.className)} placeholder={props.placeholder}/>
+        <input type={type} className={classProps} placeholder={placeholder}/>
     )
 }
 

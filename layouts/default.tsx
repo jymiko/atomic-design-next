@@ -6,15 +6,15 @@ const defaults = ({children}:any) => {
   return (
     <div>
         <div className="hidden lg:block">
-            <NavbarPrimary/>
+            {/* <NavbarPrimary/> */}
+            header
         </div>
         <div className="block lg:hidden">
-            <NavbarMobile/>
+            {/* <NavbarMobile/> */}
         </div>
-        <main>
-            {children}
-        </main>
-        <Footer/>
+        <div>
+            <main>{children}</main>
+        </div>
     </div>
   )
 }

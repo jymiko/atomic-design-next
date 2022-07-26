@@ -23,7 +23,15 @@
 }
 
 .default {
-    @apply bg-cobalt text-white border border-cobalt
+    @apply border border-dim-gray/50 border-solid hover:border-cobalt hover:text-cobalt
+}
+
+.primary {
+    @apply bg-cobalt text-white
+}
+
+.dash {
+    @apply border border-dashed border-dim-gray/50 hover:border-cobalt hover:text-cobalt
 }
 
 .bordered {
