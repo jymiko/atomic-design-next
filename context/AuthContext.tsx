@@ -44,6 +44,7 @@ const AuthProvider = ({ children }: Props) => {
       const initAuth = async (): Promise<void> => {
         setIsInitialized(true)
         const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)!
+        console.log(storedToken)
         if (storedToken) {
           setLoading(true)
           await axios
@@ -72,27 +73,18 @@ const AuthProvider = ({ children }: Props) => {
   
     const handleLogin = (params: LoginParams, errorCallback?: ErrCallbackType) => {
       axios
-        .post(authConfig.loginEndpoint, params)
+        .post(authConfig.loginEndpoint, params, { headers:{ 
+          'api-key': 'eyJpZCI6IjciLCJuYW1lIjoic2Nvb3Bfd2ViX2FwcHMifQ'
+        }})
         .then(async res => {
-          window.localStorage.setItem(authConfig.storageTokenKeyName, res.data.accessToken)
-        })
-        .then(() => {
-          axios
-            .get(authConfig.meEndpoint, {
-              headers: {
-                Authorization: window.localStorage.getItem(authConfig.storageTokenKeyName)!
-              }
-            })
-            .then(async response => {
-              const returnUrl = router.query.returnUrl
-  
-              setUser({ ...response.data.userData })
-              await window.localStorage.setItem('userData', JSON.stringify(response.data.userData))
-  
-              const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
-  
-              router.replace(redirectURL as string)
-            })
+          setUser({ ...res.data.data.first_name })
+          window.localStorage.setItem(authConfig.storageTokenKeyName, res.data.data.access_token)
+          window.localStorage.setItem('refreshToken', res.data.data.refresh_token)
+          window.localStorage.setItem('userData', JSON.stringify(res.data.data.first_name))
+          const returnUrl = router.back()
+          const currentUrl = router.asPath
+          const redirectURL = currentUrl && currentUrl !== '/login' ? returnUrl : '/'
+          router.replace(redirectURL as string)
         })
         .catch(err => {
           if (errorCallback) errorCallback(err)

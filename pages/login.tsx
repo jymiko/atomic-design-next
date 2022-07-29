@@ -1,10 +1,21 @@
 import { ChevronLeftIcon, EyeOffIcon } from '@heroicons/react/outline'
+import {useState} from 'react'
 import Image from 'next/image'
 import logo from 'assets/logo.svg'
 import vectorLogin from 'assets/login.png'
 import LoginBy from 'components/old/Login/LoginBy'
+import {useAuth} from 'hooks/useAuth'
 
- const login = () => {
+ const Login = () => {
+    const auth = useAuth()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+    const [error, setError] = useState<any>()
+    const handleLogin = () => {
+        auth.login({ email, password }, () => {
+            setError('username or Password is invalid')
+          })
+    }
   return (
     <>
         <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -31,6 +42,7 @@ import LoginBy from 'components/old/Login/LoginBy'
                                 id="email"
                                 type="text"
                                 name="email"
+                                onChange={(e:any) =>  setEmail(e.target.value)}
                             />
                             <p className="text-amaranth my-2 ">Email yang anda masukkan tidak valid</p>
                         </div>
@@ -44,6 +56,7 @@ import LoginBy from 'components/old/Login/LoginBy'
                                     type='password'
                                     name="password"
                                     id="password"
+                                    onChange={(e:any) =>  setPassword(e.target.value)}
                                 />
                                 <button>
                                     <EyeOffIcon
@@ -61,6 +74,7 @@ import LoginBy from 'components/old/Login/LoginBy'
                         <div className="flex items-center flex-col lg:pt-24">
                             <button
                                 type="submit"
+                                onClick={handleLogin}
                                 className={'bg-cobalt text-white-smoke w-full lg:w-auto mt-10 mb-4 lg:px-24 py-2 text-base font-bold radius rounded-full lg:rounded-md'}
                             >
                                 Masuk
@@ -109,4 +123,4 @@ import LoginBy from 'components/old/Login/LoginBy'
   )
 }
 
-export default login
+export default Login

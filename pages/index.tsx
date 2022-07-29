@@ -16,6 +16,7 @@ const Home = () => {
   const auth = useAuth()
   const router = useRouter()
 
+  var user
   useEffect(() => {
     if (!router.isReady) {
       return
@@ -27,7 +28,18 @@ const Home = () => {
       // Redirect user to Home URL
       router.replace(homeRoute)
     }
+    user = window.localStorage.getItem('userData')
   },[])
+
+  
+
+  return(
+    <>
+      <div>
+        homepage {user}
+      </div>    
+    </>
+  )
 }
 
 export default Home
